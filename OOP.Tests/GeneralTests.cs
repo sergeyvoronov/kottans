@@ -99,7 +99,7 @@ namespace OOP.Tests
             //,typeof(EquilateralTriangle)
             //,typeof(RightTriangle)
             )] Type targetType,
-            [Values(2 * Radius * Math.PI
+            [Values(2 * Radius * Math.PI * Multiplier
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
             //,2*(Edge1 + Edge2) * Multiplier
             //,(Edge1 + Edge2 + Edge3) * Multiplier
