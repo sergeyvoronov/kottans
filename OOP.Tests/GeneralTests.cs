@@ -14,6 +14,7 @@ namespace OOP.Tests
 	    private const double Edge1 = 3d;
 	    private const double Edge2 = 4d;
 	    private const double Edge3 = 5d;
+		private const double Hypotenuse = 5d;
 	    private const int CoordX = 0;
 	    private const int CoordY = 0;
 	    private const int Multiplier = 3;
@@ -77,8 +78,8 @@ namespace OOP.Tests
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
             //,2*(Edge1 + Edge2)
             //,Edge1 + Edge2 + Edge3
-            //,Edge1 + Edge2 + Edge3
-            //,Edge1 + Edge2 + Edge3
+            //,Edge1 * 3
+            //,Edge1 + Edge2 + Hypotenuse
             )] double perimeter)
         {
             // declare
@@ -103,8 +104,8 @@ namespace OOP.Tests
             // TODO: UNCOMMENT WHEN IMPLEMENTED ALL SHAPES
             //,2*(Edge1 + Edge2) * Multiplier
             //,(Edge1 + Edge2 + Edge3) * Multiplier
-            //,(Edge1 + Edge2 + Edge3) * Multiplier
-            //,(Edge1 + Edge2 + Edge3)* Multiplier
+            //,(Edge1) * 3 * Multiplier
+            //,(Edge1 + Edge2 + Hypotenuse)* Multiplier
             )] double perimeter)
         {
             // declare
