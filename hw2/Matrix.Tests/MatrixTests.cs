@@ -16,90 +16,91 @@ namespace Matrix.Tests
         //    Assert.AreEqual(expectedSize, matrix.Size);
         //}
 
-        //[Test]
-        //public void Constructor_WhenPassedNull_ThrowsArgumentNullException()
-        //{
-        //    Assert.Throws<ArgumentNullException>(() =>
-        //    {
-        //        new CoolMatrix(null);
-        //    });
-        //}
+        [Test]
+        public void Constructor_WhenPassedNull_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                new CoolMatrix(null);
+            });
+        }
+    
+        
+        [Test]
+        public void IsSquare_WithNotSquare_ReturnsFalse()
+        {
+            CoolMatrix matrix = new int[3, 2];
+            Assert.IsFalse(matrix.IsSquare);
+        }
+       
+        [Test]
+        public void IsSquare_WithSquare_ReturnsTrue()
+        {
+            CoolMatrix matrix = new int[2, 2];
+            Assert.IsTrue(matrix.IsSquare);
+        }
 
-        //[Test]
-        //public void IsSquare_WithNotSquare_ReturnsFalse()
-        //{
-        //    CoolMatrix matrix = new int [3,2];
-        //    Assert.IsFalse(matrix.IsSquare);
-        //}
+        [Test]
+        public void ToString_Always_PrintsOutUnderlyingMatrix()
+        {
+            CoolMatrix matrix = new[,]
+            {
+                { 1, 2 },
+                { 3, 4 }
+            };
 
-        //[Test]
-        //public void IsSquare_WithSquare_ReturnsTrue()
-        //{
-        //    CoolMatrix matrix = new int[2, 2];
-        //    Assert.IsTrue(matrix.IsSquare);
-        //}
+            var expected = $@"[1, 2]{Environment.NewLine}[3, 4]";
 
-        //[Test]
-        //public void ToString_Always_PrintsOutUnderlyingMatrix()
-        //{
-        //    CoolMatrix matrix = new[,]
-        //    {
-        //        { 1, 2 },
-        //        { 3, 4 }
-        //    };
+            Assert.AreEqual(expected, matrix.ToString());
+        }
 
-        //    var expected = $@"[1, 2]{Environment.NewLine}[3, 4]";
+        [Test]
+        public void Indexer_WhenUsed_ReturnsDataFromMatrix()
+        {
+            CoolMatrix matrix = new[,]
+            {
+                { 1, 2 },
+                { 3, 4 }
+            };
 
-        //    Assert.AreEqual(expected, matrix.ToString());
-        //}
+            Assert.AreEqual(1, matrix[0, 0]);
+            Assert.AreEqual(2, matrix[0, 1]);
+            Assert.AreEqual(3, matrix[1, 0]);
+            Assert.AreEqual(4, matrix[1, 1]);
+        }
 
-        //[Test]
-        //public void Indexer_WhenUsed_ReturnsDataFromMatrix()
-        //{
-        //    CoolMatrix matrix = new [,]
-        //    {
-        //        { 1, 2 },
-        //        { 3, 4 }
-        //    };
+        [Test]
+        public void Indexer_UsingValueOutOfMatrixRange_ThrowsArgumentOutOfRangeException()
+        {
+            CoolMatrix matrix = new[,]
+            {
+                { 1, 2 },
+                { 3, 4 }
+            };
 
-        //    Assert.AreEqual(1, matrix[0, 0]);
-        //    Assert.AreEqual(2, matrix[0, 1]);
-        //    Assert.AreEqual(3, matrix[1, 0]);
-        //    Assert.AreEqual(4, matrix[1, 1]);
-        //}
+            Assert.Throws<IndexOutOfRangeException>(() =>
+            {
+                var temp = matrix[2, 0];
+            });
+        }
 
-        //[Test]
-        //public void Indexer_UsingValueOutOfMatrixRange_ThrowsArgumentOutOfRangeException()
-        //{
-        //    CoolMatrix matrix = new[,]
-        //    {
-        //        { 1, 2 },
-        //        { 3, 4 }
-        //    };
+        [Test]
+        public void EqalityOperator_WhenAllMembersAreEqual_ReturnsTrue()
+        {
+            CoolMatrix matrixA = new[,]
+            {
+                { 1, 2 },
+                { 3, 4 }
+            };
 
-        //    Assert.Throws<IndexOutOfRangeException>(() =>
-        //    {
-        //        var temp = matrix[2, 0];
-        //    });
-        //}
+            CoolMatrix matrixB = new[,]
+            {
+                { 1, 2 },
+                { 3, 4 }
+            };
 
-        //[Test]
-        //public void EqalityOperator_WhenAllMembersAreEqual_ReturnsTrue()
-        //{
-        //    CoolMatrix matrixA = new[,]
-        //    {
-        //        { 1, 2 },
-        //        { 3, 4 }
-        //    };
-
-        //    CoolMatrix matrixB = new[,]
-        //    {
-        //        { 1, 2 },
-        //        { 3, 4 }
-        //    };
-
-        //    Assert.IsTrue(matrixA == matrixB);
-        //}
+            Assert.IsTrue(matrixA == matrixB);
+        }
 
         //[Test]
         //public void EqualityOperator_WhenAnyMemberIsNotEqual_ReturnsFalse()
