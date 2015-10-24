@@ -5,16 +5,16 @@ namespace Matrix.Tests
 {
     public class MatrixTests
     {
-        //[Test]
-        //public void Constructor_WhenPassedArray_ReturnsCorrectSize()
-        //{
-        //    var arr = new int[3, 2];
-        //    var matrix = new CoolMatrix(arr);
+        [Test]
+        public void Constructor_WhenPassedArray_ReturnsCorrectSize()
+        {
+            var arr = new int[3, 2];
+            var matrix = new CoolMatrix(arr);
 
-        //    var expectedSize = new Size(width: 3, height: 2);
+            var expectedSize = new Size(width: 2, height: 3);
 
-        //    Assert.AreEqual(expectedSize, matrix.Size);
-        //}
+            Assert.AreEqual(expectedSize, matrix.Size);
+        }
 
         [Test]
         public void Constructor_WhenPassedNull_ThrowsArgumentNullException()
