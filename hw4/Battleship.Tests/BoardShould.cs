@@ -11,46 +11,46 @@ namespace Battleship.Tests
     // four-funnel : Aircraft carrier
     public class BoardShould
     {
-    //    private Board board;
+        private Board board;
 
-    //    [SetUp]
-    //    public void Setup()
-    //    {
-    //        board = new Board();
-    //    }
+        [SetUp]
+        public void Setup()
+        {
+            board = new Board();
+        }
 
-    //    [Test]
-    //    public void AcceptSingleFunnelShip()
-    //    {
-    //        board.Add(new PatrolBoat(1, 1));
+        [Test]
+        public void AcceptSingleFunnelShip()
+        {
+            board.Add(new PatrolBoat(1, 1));
 
-    //        var shipsOnBoard = board.GetAll();
+            var shipsOnBoard = board.GetAll();
 
-    //        Assert.AreEqual(1, shipsOnBoard.Count);
-    //    }
+            Assert.AreEqual(1, shipsOnBoard.Count);
+        }
 
-        //[Test]
-        //public void ThrowShipsOverlapException_WhenShipsOverlap()
-        //{
-        //    board.Add(new PatrolBoat(1, 1));
+        [Test]
+        public void ThrowShipsOverlapException_WhenShipsOverlap()
+        {
+            board.Add(new PatrolBoat(1, 1));
 
-        //    Assert.Throws<ShipOverlapException>(() =>
-        //    {
-        //        board.Add(new PatrolBoat(1, 1));
-        //    }, message: "Ship A1x1- overlaps with A1x1-");
-        //}
+            Assert.Throws<ShipOverlapException>(() =>
+            {
+                board.Add(new PatrolBoat(1, 1));
+            }, message: "Ship A1x1- overlaps with A1x1-");
+        }
 
-        //[TestCase(11, 1, Direction.Horizontal)]
-        //[TestCase(9, 1, Direction.Horizontal)]
-        //[TestCase(1, 11, Direction.Horizontal)]
-        //[TestCase(1, 9, Direction.Vertiacal)]
-        //public void ThrowsArgumentOutOfRangeException_WhenShipIsOutOfBoard(byte x, byte y, Direction direction)
-        //{
-        //    Assert.Throws<ArgumentOutOfRangeException>(() =>
-        //    {
-        //        board.Add(new Submarine(x, y, direction));
-        //    });
-        //}
+        [TestCase(11, 1, Direction.Horizontal)]
+        [TestCase(9, 1, Direction.Horizontal)]
+        [TestCase(1, 11, Direction.Horizontal)]
+        [TestCase(1, 9, Direction.Vertiacal)]
+        public void ThrowsArgumentOutOfRangeException_WhenShipIsOutOfBoard(byte x, byte y, Direction direction)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                board.Add(new Submarine(x, y, direction));
+            });
+        }
 
         //[TestCase("A1")]
         //[TestCase("B2x3|")]

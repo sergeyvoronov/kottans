@@ -12,6 +12,7 @@ namespace BattleShip
     {
         public Cruiser(int x, int y, Direction direction = Direction.Vertiacal) : base(x, y, direction)
         {
+            Length = (int) ShipTypes.Cruiser;
         }
     }
 }

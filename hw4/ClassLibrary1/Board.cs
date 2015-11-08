@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,31 @@ namespace Battleship
 {
     public class Board
     {
-        public void Add(PatrolBoat patrolBoat)
+
+        private List<Ship> ships;
+
+        public Board()
         {
-            throw new NotImplementedException();
+            ships = new List<Ship>();
+        } 
+        public void Add(Ship ship)
+        {
+            foreach (var s in ships)
+            {
+                if (s.OverlapsWith(ship))  throw new ShipOverlapException($"Ship {s.ToString()} - overlaps with {ship.ToString()}");
+                if (s.FitsInSquare(ship)) throw  new ArgumentOutOfRangeException();
+            }
+           ships.Add(ship);
         }
 
-        public object GetAll()
+        public List<Ship> GetAll()
         {
-            throw new NotImplementedException();
+            return ships;
+        }
+
+        public int Count()
+        {
+            return ships.Count;
         }
     }
 }
