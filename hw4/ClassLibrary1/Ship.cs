@@ -26,7 +26,7 @@ namespace BattleShip
         public int borderX => (Direction == Direction.Horizontal) ? X + (Length - 1) : X;
         public int borderY => (Direction == Direction.Vertiacal) ? Y + (Length - 1) : Y;
 
-        public bool FitsInSquare(byte squareHeight, byte squareWidth)
+        public bool FitsInSquare(int squareHeight, int squareWidth)
         {
             return borderX <= squareWidth && borderY <= squareHeight;
         }
@@ -96,7 +96,6 @@ namespace BattleShip
 
                             throw new NotAShipException();
                         }
-
                          if (lenght>4) throw new NotAShipException();
                         break;
                     case 4:
@@ -123,11 +122,10 @@ namespace BattleShip
         {
             switch (lenght)
             {
-                case (int)ShipTypes.PatrolBoat:return new PatrolBoat(x,y,direction);
-
-                case (int)ShipTypes.Cruiser: return new Cruiser(x,y, direction);
-                case (int)ShipTypes.Submarine: return new Submarine(x,y, direction);
-                case (int)ShipTypes.AircraftCarrier: return new AircraftCarrier(x,y,direction);
+                case (int)ShipTypes.PatrolBoat:return new PatrolBoat(x, y, direction);
+                case (int)ShipTypes.Cruiser: return new Cruiser(x, y, direction);
+                case (int)ShipTypes.Submarine: return new Submarine(x, y, direction);
+                case (int)ShipTypes.AircraftCarrier: return new AircraftCarrier(x, y,direction);
                 default: return new Ship(x, y, direction);
             }
         }

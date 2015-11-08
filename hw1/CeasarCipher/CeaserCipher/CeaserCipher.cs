@@ -9,49 +9,34 @@ namespace CeaserCipher
 {
     public class CeasarCipher
     {
-        private int offset;
+        private readonly int _offset;
         private int minValueASCIITable = 33;
         private int maxValueASCIITable = 127;
-        private char[] charletters;
-
+        private readonly char[] _charletters;
 
         public CeasarCipher(int offset)
         {
-            charletters = new char[maxValueASCIITable-minValueASCIITable];
+            _charletters = new char[maxValueASCIITable-minValueASCIITable];
             Parallel.For(0, maxValueASCIITable - minValueASCIITable, index =>
             {
-                charletters[index] = (char) (index + minValueASCIITable);
+                _charletters[index] = (char) (index + minValueASCIITable);
             });
-            this.offset = offset;
+            this._offset = offset;
+        }
+
+
+
+        public string Decrypt(string str)
+        {
+            return DecryptEncrypt(str, Crypt.Decrypt);
         }
 
         public string Encrypt(string str)
         {
-            checkIsStringCorrect(str);
-            string result = "";
-            foreach (char t in str)
-            {
-                if (t == ' ')
-                {
-                    result += ' ';
-                    continue;
-                }
-                for (int j = 0; j < charletters.Length; j++)
-                {
-                    if (t == charletters[j])
-                    {
-                        result += (j + offset < charletters.Length)
-                            ? charletters[j + offset]
-                            : charletters[j + offset - charletters.Length];
-                        break;
-                    }
-                }
-            }
-
-            return result;
+            return DecryptEncrypt(str, Crypt.Encrypt);
         }
 
-        public string Decrypt(string str)
+        public string DecryptEncrypt(string str, Crypt crypt)
         {
             checkIsStringCorrect(str);
             string result = "";
@@ -62,20 +47,28 @@ namespace CeaserCipher
                     result += ' ';
                     continue;
                 }
-                for (int j = 0; j < charletters.Length; j++)
+                for (int j = 0; j < _charletters.Length; j++)
                 {
-                    if (t == charletters[j])
+                    if (t == _charletters[j])
                     {
-                        result += (j - offset < 0)
-                            ? charletters[charletters.Length - j - offset]
-                            : charletters[j - offset];
+                        if (crypt== Crypt.Decrypt)
+                        {
+                            result += (j - _offset < 0)
+                                ? _charletters[_charletters.Length - j - _offset]
+                                : _charletters[j - _offset];
+                        }
+                        else
+                        {
+                            result += (j + _offset < _charletters.Length)
+                           ? _charletters[j + _offset]
+                           : _charletters[j + _offset - _charletters.Length];
+                        }
                         break;
                     }
                 }
             }
             return result;
         }
-
 
 
         private void checkIsStringCorrect(string str)
@@ -113,6 +106,7 @@ namespace CeaserCipher
         //    if (decryptChar < minValueASCIITable) decryptChar = (char) (maxValueASCIITable - (minValueASCIITable - decryptChar));
         //    return decryptChar;
         //}
+        
     }
 }
 
