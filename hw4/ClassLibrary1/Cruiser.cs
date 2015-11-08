@@ -8,14 +8,10 @@ using System.Threading.Tasks;
 
 namespace BattleShip
 {
-    public class Cruiser
+    public class Cruiser : Ship
     {
-        public int X, Y;
-
-        public Cruiser(int x, int y)
+        public Cruiser(int x, int y, Direction direction = Direction.Vertiacal) : base(x, y, direction)
         {
-            X = x;
-            Y = y;
         }
     }
 }

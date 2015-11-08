@@ -3,33 +3,10 @@ using System.Runtime;
 
 namespace BattleShip
 {
-    public class PatrolBoat
+    public class PatrolBoat : Ship
     {
-        public int X, Y;
-        private Direction direction;
-
-        public PatrolBoat(int x, int y, Direction direction = 0)
+        public PatrolBoat(int x, int y, Direction direction = Direction.Vertiacal) : base(x, y, direction)
         {
-            this.X = x;
-            this.Y = y;
-        }
-
-        // override object.Equals
-        public override bool Equals(object obj)
-        {
-            var boat = obj as PatrolBoat;
-            if (boat != null)
-            { 
-                PatrolBoat p = boat;
-                return ((X == p.X) && (Y == p.Y)&&(direction==p.direction));
-            }
-            return false;
-        }
-
-// override object.GetHashCode
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
     }
 }
