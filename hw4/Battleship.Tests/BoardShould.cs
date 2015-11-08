@@ -88,15 +88,15 @@ namespace Battleship.Tests
             }, message);
         }
 
-        //[TestCase("A1x4-", "C3x3-", "G1x3|", "C6x2|", "I3x2-", "G6x2-", "A3", "A6", "I1", "I8")]
-        //public void AcceptSuccessfulSetup(params string[] ships)
-        //{
-        //    foreach (var ship in ships)
-        //    {
-        //        board.Add(ship);
-        //    }
+        [TestCase("A1x4-", "C3x3-", "G1x3|", "C6x2|", "I3x2-", "G6x2-", "A3", "A6", "I1", "I8")]
+        public void AcceptSuccessfulSetup(params string[] ships)
+        {
+            foreach (var ship in ships)
+            {
+                board.Add(ship);
+            }
 
-        //    board.Validate();
-        //}
+            board.Validate();
+        }
     }
 }

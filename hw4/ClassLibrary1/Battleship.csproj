@@ -43,6 +43,7 @@
     <Compile Include="AircraftCarrier.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardIsNotReadyException.cs" />
+    <Compile Include="BoardValidateClass.cs" />
     <Compile Include="ShipOverlapException.cs" />
     <Compile Include="ShipTypes.cs" />
     <Compile Include="Cruiser.cs" />

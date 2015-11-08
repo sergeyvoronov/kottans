@@ -40,7 +40,7 @@ namespace Battleship
             foreach (var s in ships)
             {   
                 if (s.OverlapsWith(ship))  throw new ShipOverlapException($"Ship {s.ToString()} - overlaps with {ship.ToString()}");
-              //  if (ship.FitsInSquare(ship.X, ship.Y)) throw new ArgumentOutOfRangeException();
+                if (ship.FitsInSquare(ship.X, ship.Y)) throw new ArgumentOutOfRangeException();
             }
            ships.Add(ship);
         }
@@ -55,17 +55,24 @@ namespace Battleship
             return ships.Count;
         }
 
-        public void Validate()
+        public bool Validate()
         {
-            Dictionary<ShipTypes, int> shipsD = dictionaryShips;
+            BoardValidateClass boats = new BoardValidateClass();
 
             foreach (var s in ships)
             {
-                if (shipsD[(ShipTypes)s.Length]>0)
-                    shipsD[(ShipTypes)s.Length] -= 1;
+                boats[s.Length] = -1;
             }
-          
+            if (!boats.Ready())
+            {
+                throw new BoardIsNotReadyException($"There is not sufficient count of ships. We need: {boats.ToString()}");
+            }
+            else
+            {
+                return true;
+            }
 
+            return false;
         }
     }
 }
