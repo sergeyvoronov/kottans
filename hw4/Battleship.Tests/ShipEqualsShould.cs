@@ -1,4 +1,4 @@
-﻿using BattleShip;
+﻿using Battleship.Ships;
 using NUnit.Framework;
 
 namespace Battleship.Tests
@@ -34,6 +34,8 @@ namespace Battleship.Tests
             Assert.AreNotEqual(ship1, ship2);
         }
 
+
+
         [Test]
         public void ReturnTrue_ComparingWithSameDirection()
         {
@@ -49,7 +51,8 @@ namespace Battleship.Tests
             var ship1 = new PatrolBoat(x: 1, y: 2, direction: Direction.Horizontal);
             var ship2 = new PatrolBoat(x: 1, y: 2, direction: Direction.Vertiacal);
 
-            Assert.AreEqual(ship1, ship2);
+            //Assert.AreEqual(ship1, ship2);//?????
+            Assert.AreNotEqual(ship1, ship2);
         }
 
         [Test]
@@ -62,5 +65,5 @@ namespace Battleship.Tests
         }
     }
 
-
+  
 }

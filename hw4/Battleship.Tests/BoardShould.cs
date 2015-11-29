@@ -1,5 +1,6 @@
 ﻿using System;
-using BattleShip;
+using Battleship.Exceptions;
+using Battleship.Ships;
 using NUnit.Framework;
 
 namespace Battleship.Tests
@@ -57,7 +58,6 @@ namespace Battleship.Tests
         public void AddAcceptStringNotation(string ship)
         {
             board.Add(ship);
-
             Assert.AreEqual(1, board.GetAll().Count);
         }
 
@@ -88,7 +88,8 @@ namespace Battleship.Tests
             }, message);
         }
 
-        [TestCase("A1x4-", "C3x3-", "G1x3|", "C6x2|", "I3x2-", "G6x2-", "A3", "A6", "I1", "I8")]
+        //как то оно не получится по идее :(
+        [TestCase("A1x4-", "C3x3-", "G1x3|", "C6x2|", "I3x2-", "G7x2-", "A3", "A6", "I1", "I8")]
         public void AcceptSuccessfulSetup(params string[] ships)
         {
             foreach (var ship in ships)

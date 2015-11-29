@@ -1,5 +1,6 @@
 ﻿using System;
-using BattleShip;
+using Battleship.Exceptions;
+using Battleship.Ships;
 using NUnit.Framework;
 
 namespace Battleship.Tests
@@ -41,6 +42,4 @@ namespace Battleship.Tests
             Assert.IsInstanceOf(expectedType, Ship.Parse(ship));
         }
     }
-
-    
 }

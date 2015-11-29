@@ -1,4 +1,4 @@
-﻿using BattleShip;
+﻿using Battleship.Ships;
 using NUnit.Framework;
 
 namespace Battleship.Tests
