@@ -9,9 +9,13 @@ namespace Kottans.LINQ
         {
             if (source == null) throw new ArgumentNullException();
             int result = 0;
-            foreach (var v in source)
+
+            checked
             {
-                result += v;
+                foreach (var v in source)
+                {
+                    result += v;
+                }
             }
             return result;
         }
@@ -20,9 +24,13 @@ namespace Kottans.LINQ
         {
             if (source == null) throw new ArgumentNullException();
             int? result = 0;
-            foreach (var v in source)
+            checked
             {
-                result += v;
+                foreach (var v in source)
+                {
+
+                    result += v.GetValueOrDefault();
+                }
             }
             return result;
         }
